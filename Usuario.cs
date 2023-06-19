@@ -190,5 +190,7 @@ namespace frmZapateria
                 dgvCarrito.Rows.Clear();
             }
         }
+
+
     }
 }
