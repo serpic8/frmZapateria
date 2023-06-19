@@ -43,6 +43,7 @@
             button1 = new Button();
             panel1 = new Panel();
             panelContenedor = new Panel();
+            button4 = new Button();
             BarraTitulo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)btnCerrar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)btnRayita).BeginInit();
@@ -124,6 +125,7 @@
             // MenuVertical
             // 
             MenuVertical.BackColor = Color.PowderBlue;
+            MenuVertical.Controls.Add(button4);
             MenuVertical.Controls.Add(panel4);
             MenuVertical.Controls.Add(button3);
             MenuVertical.Controls.Add(panel3);
@@ -231,6 +233,16 @@
             panelContenedor.Size = new Size(594, 415);
             panelContenedor.TabIndex = 2;
             // 
+            // button4
+            // 
+            button4.Location = new Point(99, 358);
+            button4.Name = "button4";
+            button4.Size = new Size(75, 23);
+            button4.TabIndex = 7;
+            button4.Text = "button4";
+            button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
+            // 
             // frmZapateria
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -267,5 +279,6 @@
         private Button button3;
         private Panel panel3;
         private Button button2;
+        private Button button4;
     }
 }

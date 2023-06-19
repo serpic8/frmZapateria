@@ -84,5 +84,10 @@ namespace frmZapateria
         {
             AbrirFormHija(new Ventas());
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            AbrirFormHija(new Usuario());
+        }
     }
 }
