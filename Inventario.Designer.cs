@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inventario));
             dgvInventario = new DataGridView();
             txtBuscar = new TextBox();
             productsDtoBindingSource = new BindingSource(components);
@@ -50,6 +51,7 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            panel1 = new Panel();
             ((System.ComponentModel.ISupportInitialize)dgvInventario).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productsDtoBindingSource).BeginInit();
             SuspendLayout();
@@ -262,11 +264,21 @@
             label1.TabIndex = 38;
             label1.Text = "Marca:";
             // 
+            // panel1
+            // 
+            panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
+            panel1.BackgroundImageLayout = ImageLayout.Zoom;
+            panel1.Location = new Point(12, 12);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(41, 23);
+            panel1.TabIndex = 54;
+            // 
             // Inventario
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(594, 415);
+            Controls.Add(panel1);
             Controls.Add(txtModelo);
             Controls.Add(cboUbi);
             Controls.Add(txtPrecio);
@@ -320,5 +332,6 @@
         private Label label3;
         private Label label2;
         private Label label1;
+        private Panel panel1;
     }
 }

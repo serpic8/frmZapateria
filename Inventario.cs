@@ -95,7 +95,7 @@ namespace frmZapateria
                         dgvInventario.DataSource = null;
                         dgvInventario.DataSource = products;
 
-                      
+
                     }
                     else
                     {
@@ -142,27 +142,27 @@ namespace frmZapateria
                 productUbicacion = cboUbi.Text
             };
 
-            
+
             using (HttpClient client = new HttpClient())
             {
                 client.BaseAddress = new Uri("https://localhost:9000/api/ZapateriaControllers/{productId}");
 
-                
+
                 var jsonProduct = JsonConvert.SerializeObject(product);
                 var content = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
 
-                
+
                 HttpResponseMessage response = await client.PutAsync($"api/Products/{selectedProductId}", content);
 
-               
+
                 if (response.IsSuccessStatusCode)
                 {
-                    
+
                     MessageBox.Show("Producto actualizado correctamente.");
                 }
                 else
                 {
-                    
+
                     MessageBox.Show("Error al actualizar el producto.");
                 }
             }
@@ -210,7 +210,7 @@ namespace frmZapateria
                         continue;
                     }
 
-                    
+
                     if (r.Cells["productMarca"].Value != null && r.Cells["productMarca"].Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
                     {
                         r.Visible = true;
