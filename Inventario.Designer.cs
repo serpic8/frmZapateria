@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             dgvInventario = new DataGridView();
-            textBox1 = new TextBox();
+            txtBuscar = new TextBox();
             productsDtoBindingSource = new BindingSource(components);
             btnBorrar = new Button();
             btnActualizar = new Button();
@@ -68,12 +68,13 @@
             dgvInventario.CellContentClick += dgvInventario_CellContentClick;
             dgvInventario.KeyDown += dgvInventario_KeyDown;
             // 
-            // textBox1
+            // txtBuscar
             // 
-            textBox1.Location = new Point(52, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(282, 23);
-            textBox1.TabIndex = 1;
+            txtBuscar.Location = new Point(52, 12);
+            txtBuscar.Name = "txtBuscar";
+            txtBuscar.Size = new Size(282, 23);
+            txtBuscar.TabIndex = 1;
+            txtBuscar.TextChanged += txtBuscar_TextChanged;
             // 
             // productsDtoBindingSource
             // 
@@ -284,7 +285,7 @@
             Controls.Add(label1);
             Controls.Add(btnActualizar);
             Controls.Add(btnBorrar);
-            Controls.Add(textBox1);
+            Controls.Add(txtBuscar);
             Controls.Add(dgvInventario);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Inventario";
@@ -299,7 +300,7 @@
         #endregion
 
         private DataGridView dgvInventario;
-        private TextBox textBox1;
+        private TextBox txtBuscar;
         private BindingSource productsDtoBindingSource;
         private Button btnBorrar;
         private Button btnActualizar;

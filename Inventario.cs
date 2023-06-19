@@ -95,7 +95,7 @@ namespace frmZapateria
                         dgvInventario.DataSource = null;
                         dgvInventario.DataSource = products;
 
-                        // Aquí puedes realizar cualquier acción adicional después de eliminar el producto
+                      
                     }
                     else
                     {
@@ -130,7 +130,7 @@ namespace frmZapateria
                 return;
             }
 
-            // Crear un objeto ProductsUpdateDto con los datos actualizados
+            // Crea un objeto ProductsUpdateDto con los datos actualizados
             ProductsUpdateDto product = new ProductsUpdateDto
             {
                 productMarca = cboMarca.Text,
@@ -142,27 +142,27 @@ namespace frmZapateria
                 productUbicacion = cboUbi.Text
             };
 
-            // Realizar la solicitud HTTP PUT para actualizar el producto
+            
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:9000/api/ZapateriaControllers/{productId}"); 
+                client.BaseAddress = new Uri("https://localhost:9000/api/ZapateriaControllers/{productId}");
 
-                // Convertir el objeto ProductsUpdateDto a formato JSON
+                
                 var jsonProduct = JsonConvert.SerializeObject(product);
                 var content = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
 
-                // Enviar la solicitud HTTP PUT para actualizar el producto
+                
                 HttpResponseMessage response = await client.PutAsync($"api/Products/{selectedProductId}", content);
 
-                // Verificar si la solicitud fue exitosa
+               
                 if (response.IsSuccessStatusCode)
                 {
-                    // El producto se actualizó correctamente
+                    
                     MessageBox.Show("Producto actualizado correctamente.");
                 }
                 else
                 {
-                    // Hubo un error al actualizar el producto
+                    
                     MessageBox.Show("Error al actualizar el producto.");
                 }
             }
@@ -174,11 +174,90 @@ namespace frmZapateria
 
         }
 
+        private void txtBuscar_TextChanged(object sender, EventArgs e)
+        {
+            RealizarBusqueda();
+        }
 
 
+        private void RealizarBusqueda()
+        {
+            dgvInventario.CurrentCell = null;
+
+            if (txtBuscar.Text != "")
+            {
+                foreach (DataGridViewRow r in dgvInventario.Rows)
+                {
+                    r.Visible = false;
+                }
+
+                foreach (DataGridViewRow r in dgvInventario.Rows)
+                {
+                    bool found = false;
+
+                    foreach (DataGridViewCell c in r.Cells)
+                    {
+                        if (c.Value != null && c.Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                        {
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (found)
+                    {
+                        r.Visible = true;
+                        continue;
+                    }
+
+                    
+                    if (r.Cells["productMarca"].Value != null && r.Cells["productMarca"].Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                    {
+                        r.Visible = true;
+                        continue;
+                    }
+
+                    if (r.Cells["productTipo"].Value != null && r.Cells["productTipo"].Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                    {
+                        r.Visible = true;
+                        continue;
+                    }
+
+                    if (r.Cells["productColor"].Value != null && r.Cells["productColor"].Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                    {
+                        r.Visible = true;
+                        continue;
+                    }
+
+                    if (r.Cells["productPrecio"].Value != null && r.Cells["productPrecio"].Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                    {
+                        r.Visible = true;
+                        continue;
+                    }
+
+                    if (r.Cells["productId"].Value != null && r.Cells["productId"].Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                    {
+                        r.Visible = true;
+                        continue;
+                    }
+
+                    if (r.Cells["productTalla"].Value != null && r.Cells["productTalla"].Value.ToString().ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                    {
+                        r.Visible = true;
+                        continue;
+                    }
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow r in dgvInventario.Rows)
+                {
+                    r.Visible = true;
+                }
+            }
+        }
 
     }
-
 }
 
 

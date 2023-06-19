@@ -28,19 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
+            dataGridView1 = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(35, 75);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowTemplate.Height = 25;
+            dataGridView1.Size = new Size(522, 300);
+            dataGridView1.TabIndex = 0;
             // 
             // Ventas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(594, 415);
+            Controls.Add(dataGridView1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Ventas";
             Text = "Ventas";
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
+
+        private DataGridView dataGridView1;
     }
 }
