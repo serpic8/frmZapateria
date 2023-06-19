@@ -23,6 +23,8 @@ namespace frmZapateria
 
         private async void Usuario_Load(object sender, EventArgs e)
         {
+            lblFecha.Text = DateTime.Now.ToString("dd/MM/yy");
+            lblHora.Text = DateTime.Now.ToString("HH:mm");
             await CargarProductos();
         }
 

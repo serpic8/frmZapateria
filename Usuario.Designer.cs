@@ -34,7 +34,9 @@
             btnRayita = new PictureBox();
             btnMaximizar = new PictureBox();
             BarraTitulo = new Panel();
+            lblHora = new Label();
             panel1 = new Panel();
+            lblFecha = new Label();
             txtBuscar = new TextBox();
             pictureBox2 = new PictureBox();
             btnMinimizar = new PictureBox();
@@ -117,7 +119,9 @@
             // BarraTitulo
             // 
             BarraTitulo.BackColor = Color.MediumSeaGreen;
+            BarraTitulo.Controls.Add(lblHora);
             BarraTitulo.Controls.Add(panel1);
+            BarraTitulo.Controls.Add(lblFecha);
             BarraTitulo.Controls.Add(txtBuscar);
             BarraTitulo.Controls.Add(btnCerrar);
             BarraTitulo.Controls.Add(btnRayita);
@@ -130,6 +134,16 @@
             BarraTitulo.Size = new Size(800, 35);
             BarraTitulo.TabIndex = 1;
             // 
+            // lblHora
+            // 
+            lblHora.AutoSize = true;
+            lblHora.Font = new Font("Sitka Text", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblHora.Location = new Point(648, 8);
+            lblHora.Name = "lblHora";
+            lblHora.Size = new Size(37, 16);
+            lblHora.TabIndex = 10;
+            lblHora.Text = "label3";
+            // 
             // panel1
             // 
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
@@ -138,6 +152,16 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(46, 23);
             panel1.TabIndex = 56;
+            // 
+            // lblFecha
+            // 
+            lblFecha.AutoSize = true;
+            lblFecha.Font = new Font("Sitka Text", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            lblFecha.Location = new Point(578, 9);
+            lblFecha.Name = "lblFecha";
+            lblFecha.Size = new Size(37, 16);
+            lblFecha.TabIndex = 9;
+            lblFecha.Text = "label2";
             // 
             // txtBuscar
             // 
@@ -421,5 +445,7 @@
         private DataGridViewTextBoxColumn productPrecio;
         private DataGridViewTextBoxColumn productUbicacion;
         private ErrorProvider erpError;
+        private Label lblHora;
+        private Label lblFecha;
     }
 }
