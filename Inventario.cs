@@ -123,14 +123,13 @@ namespace frmZapateria
 
         private async void btnActualizar_Click(object sender, EventArgs e)
         {
-
             if (selectedProductId == 0)
             {
                 MessageBox.Show("No se ha seleccionado ningún producto.");
                 return;
             }
 
-            // Crea un objeto ProductsUpdateDto con los datos actualizados
+
             ProductsUpdateDto product = new ProductsUpdateDto
             {
                 productMarca = cboMarca.Text,
@@ -142,31 +141,31 @@ namespace frmZapateria
                 productUbicacion = cboUbi.Text
             };
 
-
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:9000/api/ZapateriaControllers/{productId}");
-
-
-                var jsonProduct = JsonConvert.SerializeObject(product);
-                var content = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
-
-
-                HttpResponseMessage response = await client.PutAsync($"api/Products/{selectedProductId}", content);
-
-
-                if (response.IsSuccessStatusCode)
+                using (HttpClient client = new HttpClient())
                 {
+                    client.BaseAddress = new Uri("https://localhost:9000/");
 
-                    MessageBox.Show("Producto actualizado correctamente.");
-                }
-                else
-                {
+                    var jsonProduct = JsonConvert.SerializeObject(product);
+                    var content = new StringContent(jsonProduct, Encoding.UTF8, "application/json");
 
-                    MessageBox.Show("Error al actualizar el producto.");
+                    HttpResponseMessage response = await client.PutAsync($"api/ZapateriaControllers/{selectedProductId}", content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Producto actualizado correctamente.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Error al actualizar el producto.");
+                    }
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al conectar con la API: " + ex.Message);
+            }
         }
 
         private async void dgvInventario_KeyDown(object sender, KeyEventArgs e)

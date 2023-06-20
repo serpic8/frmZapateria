@@ -59,10 +59,12 @@
             // dgvInventario
             // 
             dgvInventario.AllowUserToAddRows = false;
+            dgvInventario.AllowUserToDeleteRows = false;
             dgvInventario.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvInventario.Dock = DockStyle.Bottom;
             dgvInventario.Location = new Point(0, 206);
             dgvInventario.Name = "dgvInventario";
+            dgvInventario.ReadOnly = true;
             dgvInventario.RowTemplate.Height = 25;
             dgvInventario.Size = new Size(594, 209);
             dgvInventario.TabIndex = 0;
