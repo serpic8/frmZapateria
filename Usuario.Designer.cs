@@ -356,6 +356,7 @@
             btnComprar.TabIndex = 4;
             btnComprar.Text = "Comprar";
             btnComprar.UseVisualStyleBackColor = true;
+            btnComprar.Click += btnComprar_Click;
             // 
             // btnCancelar
             // 

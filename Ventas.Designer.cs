@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dataGridView1 = new DataGridView();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            dgvVentas = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // dgvVentas
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(35, 75);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(522, 300);
-            dataGridView1.TabIndex = 0;
+            dgvVentas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVentas.Location = new Point(32, 48);
+            dgvVentas.Name = "dgvVentas";
+            dgvVentas.RowTemplate.Height = 25;
+            dgvVentas.Size = new Size(522, 300);
+            dgvVentas.TabIndex = 0;
             // 
             // Ventas
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(594, 415);
-            Controls.Add(dataGridView1);
+            Controls.Add(dgvVentas);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Ventas";
             Text = "Ventas";
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvVentas).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvVentas;
     }
 }

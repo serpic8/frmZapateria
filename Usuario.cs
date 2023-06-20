@@ -193,6 +193,114 @@ namespace frmZapateria
             }
         }
 
+        private async Task EliminarProducto(int productId, DataGridView dgvCarrito)
+        {
 
+            try
+            {
+                using (var client = new HttpClient())
+                {
+                    foreach (DataGridViewRow row in dgvCarrito.SelectedRows)
+                    {
+                        int productsId = Convert.ToInt32(row.Cells["productId"].Value);
+
+                        var response = await client.DeleteAsync($"https://localhost:9000/api/ZapateriaControllers/{productId}");
+
+                        if (response.IsSuccessStatusCode)
+                        {
+                            MessageBox.Show("Producto eliminado correctamente.");
+
+                            
+                            var product = products.FirstOrDefault(p => p.productId == productId);
+                            if (product != null)
+                            {
+                                products.Remove(product);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Error al eliminar el producto.");
+                        }
+                    }
+
+                    
+                    dgvCarrito.DataSource = null;
+                    dgvCarrito.DataSource = products;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al eliminar el producto: {ex.Message}");
+            }
+
+
+
+        }
+
+        private async void btnComprar_Click(object sender, EventArgs e)
+        {
+            {
+                DialogResult result = MessageBox.Show("¿Estás seguro de realizar la compra?", "Confirmar compra", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        HttpClient client = new HttpClient();
+
+                        string url = "https://localhost:9000/api/Sales";
+
+                        DateTime fechaCompra = DateTime.Now;
+
+                        List<int> productosEliminados = new List<int>(); 
+
+                        foreach (DataGridViewRow row in dgvProductos.SelectedRows)
+                        {
+                            int cantidad = Convert.ToInt32(row.Cells["Cantidad"].Value);
+                            double precioVenta = Convert.ToDouble(row.Cells["PrecioVenta"].Value);
+                            double total = cantidad * precioVenta;
+
+                            SalesCreateDto sale = new SalesCreateDto
+                            {
+                                FechaVenta = fechaCompra,
+                                Cantidad = cantidad,
+                                PrecioUnitario = (decimal)precioVenta,
+                                Total = (decimal)total
+                            };
+
+                            string jsonSale = JsonConvert.SerializeObject(sale);
+                            var content = new StringContent(jsonSale, Encoding.UTF8, "application/json");
+
+                            HttpResponseMessage response = await client.PostAsync(url, content);
+
+                            if (response.IsSuccessStatusCode)
+                            {
+                                dgvProductos.Rows.Remove(row);
+
+                                int idProducto = Convert.ToInt32(row.Cells["IDProducto"].Value);
+                                productosEliminados.Add(idProducto);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Error al realizar la compra.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+
+                        // Eliminar los productos de la base de datos
+                        foreach (int idProducto in productosEliminados)
+                        {
+                            await EliminarProducto(idProducto, dgvCarrito);
+                        }
+
+                        MessageBox.Show("La compra se realizó exitosamente.", "Compra realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al realizar la compra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
+        }
     }
 }
