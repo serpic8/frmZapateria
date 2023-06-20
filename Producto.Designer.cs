@@ -46,7 +46,6 @@
             label2 = new Label();
             label1 = new Label();
             btnAgregar = new Button();
-            btnLimpiar = new Button();
             btnEnviar = new Button();
             txtModelo = new TextBox();
             erpValidaciones = new ErrorProvider(components);
@@ -205,22 +204,13 @@
             // 
             // btnAgregar
             // 
-            btnAgregar.Location = new Point(322, 183);
+            btnAgregar.Location = new Point(395, 183);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(75, 23);
             btnAgregar.TabIndex = 34;
             btnAgregar.Text = "Agregar";
             btnAgregar.UseVisualStyleBackColor = true;
             btnAgregar.Click += btnAgregar_Click;
-            // 
-            // btnLimpiar
-            // 
-            btnLimpiar.Location = new Point(412, 183);
-            btnLimpiar.Name = "btnLimpiar";
-            btnLimpiar.Size = new Size(75, 23);
-            btnLimpiar.TabIndex = 35;
-            btnLimpiar.Text = "Limpiar";
-            btnLimpiar.UseVisualStyleBackColor = true;
             // 
             // btnEnviar
             // 
@@ -250,7 +240,6 @@
             ClientSize = new Size(594, 415);
             Controls.Add(txtModelo);
             Controls.Add(btnEnviar);
-            Controls.Add(btnLimpiar);
             Controls.Add(btnAgregar);
             Controls.Add(dgvProductos);
             Controls.Add(cboUbi);
@@ -296,7 +285,6 @@
         private Label label2;
         private Label label1;
         private Button btnAgregar;
-        private Button btnLimpiar;
         private Button btnEnviar;
         private TextBox txtModelo;
         private ErrorProvider erpValidaciones;

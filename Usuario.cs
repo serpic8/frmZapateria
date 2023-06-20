@@ -131,7 +131,12 @@ namespace frmZapateria
                 }
             }
         }
-
+        private void Limpiar_dgv(DataGridView dataGridView)
+        {
+            dataGridView.DataSource = null;
+            dataGridView.Rows.Clear();
+            dataGridView.Columns.Clear();
+        }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
@@ -298,6 +303,8 @@ namespace frmZapateria
                     {
                         MessageBox.Show("Error al realizar la compra: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+
+                    Limpiar_dgv(dgvCarrito);
                 }
             }
 
